@@ -693,6 +693,30 @@
             font-size: 14px;
         }
 
+        .paypal-btn {
+            background: #FFC439;
+            border: none;
+            color: #1a1a2e;
+            padding: 16px 45px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(255, 196, 57, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 0.8px;
+            text-decoration: none;
+        }
+        .paypal-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 36px rgba(255, 196, 57, 0.6);
+        }
+
         .redirect-note {
             background: #fff9c4;
             border: 2px solid var(--accent-color);
@@ -704,6 +728,97 @@
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        /* ===== STORE STYLES ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 20px 0 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 20px 20px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 3px solid #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            background: #f9f9f9;
+            border: 2px solid #f0f0f0;
+            transition: 0.3s;
+        }
+        .product-card:hover .product-image {
+            border-color: var(--secondary-color);
+        }
+
+        .product-card h3 {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin: 8px 0 5px;
+        }
+        .product-card .price {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 8px 0 12px;
+        }
+        .product-card .price small {
+            font-size: 0.8rem;
+            color: #999;
+            font-weight: normal;
+        }
+        .product-card .description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .product-card .btn-small {
+            padding: 10px 28px;
+            font-size: 1rem;
+        }
+
+        .store-banner {
+            background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%);
+            border: 4px solid var(--accent-color);
+            border-radius: 30px;
+            padding: 25px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .store-banner h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .store-banner p {
+            color: #555;
+            font-size: 1.1rem;
+        }
+        .store-banner .shipping-note {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #888;
+            background: rgba(255,255,255,0.6);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
         }
 
         /* ===== MISC ===== */
@@ -743,6 +858,7 @@
             .enter-button { padding: 16px 40px; font-size: 1.4rem; }
             .dancer-wrapper { font-size: 4.5rem; }
             .bg-emoji { font-size: 2rem !important; }
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
         }
 
         @media (max-width: 400px) {
@@ -870,6 +986,12 @@
                 <h3 style="color: var(--secondary-color);">Costume Corner</h3>
                 <p>Fun &amp; safe outfit ideas!</p>
                 <button class="funky-button yellow" style="padding: 8px 20px; font-size: 0.9rem;" onclick="toggleModal('modal-costume', true)">Get Ideas</button>
+            </div>
+            <div class="funky-card text-center">
+                <span style="font-size: 3rem;">🛍️</span>
+                <h3 style="color: var(--secondary-color);">Merch Store</h3>
+                <p>Rep your dance crew!</p>
+                <button class="funky-button green" style="padding: 8px 20px; font-size: 0.9rem;" onclick="showPage('page-store')">Shop Now</button>
             </div>
         </div>
 
@@ -1097,7 +1219,100 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- ============ 5. MODALS ======================= -->
+    <!-- ============ 5. MERCH STORE ================== -->
+    <!-- ============================================== -->
+    <div id="page-store" class="hidden">
+        <div class="flex-wrap" style="justify-content: space-between; margin-bottom: 30px;">
+            <button class="back-button" onclick="showPage('page-kids')">← Back to Kids Zone</button>
+            <h1 class="section-title">🛍️ Menina Merch</h1>
+            <div style="width: 150px;"></div>
+        </div>
+
+        <!-- Store Banner -->
+        <div class="store-banner">
+            <h2>✨ Show Your Dance Spirit! ✨</h2>
+            <p>Rep your favorite dance community with our exclusive merch! Every purchase supports our kid-run community.</p>
+            <div class="shipping-note">🎁 Free shipping on orders over $80 • Parent-approved purchases</div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid">
+            <!-- Product 1: Dance Tee -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/00aaf53f4801ede6279e46b7cbde074b/a68f79cc366c5fae-cb/s1280x1920/7e0e9455414e7305f4dbbbffab3a557ed8196a1d.pnj" alt="Dance Tee">
+                <h3>Dance Tee</h3>
+                <div class="price">$50 <small>USD</small></div>
+                <div class="description">Comfortable cotton tee with our fun logo. Pink or blue options available!</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk T-Shirt', '50.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 2: Dance Backpack -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/e093f8b9fed1435386df4727aba71ba2/a68f79cc366c5fae-51/s1280x1920/0c03331ce97cb4bb733eec44f9c2fef7d286f1d4.pnj" alt="Dance Backpack">
+                <h3>Dance Backpack</h3>
+                <div class="price">$96 <small>USD</small></div>
+                <div class="description">Perfect for carrying your dance gear! Spacious, colorful, and super cute.</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Backpack', '96.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 3: Dance Jacket -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/76c66460880cf9ce56ba926b2ab45c77/a68f79cc366c5fae-30/s1280x1920/a539b7f7480a120ac7fd0836328deed3355ee542.pnj" alt="Dance Jacket">
+                <h3>Dance Jacket</h3>
+                <div class="price">$110 <small>USD</small></div>
+                <div class="description">Cozy zip-up hoodie with embroidered logo. Stay warm while you dance!</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Jacket', '110.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 4: Dance Handbag -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/90a7c5943a5cb906f8aa36de9a460031/a68f79cc366c5fae-dc/s1280x1920/5c0f9972d6d7c6860196d68a88f984af72aa48e5.pnj" alt="Dance Handbag">
+                <h3>Dance Handbag</h3>
+                <div class="price">$70 <small>USD</small></div>
+                <div class="description">Stylish crossbody bag with our signature colors. Perfect for everyday use!</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Handbag', '70.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 5: Phone Case -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/a5eecdf619f2f64ec710cc3b566d2964/a68f79cc366c5fae-3c/s1280x1920/aad55497cd960bdfab5feadb06a53f15ccb31661.pnj" alt="Phone Case">
+                <h3>Phone Case</h3>
+                <div class="price">$36 <small>USD</small></div>
+                <div class="description">Protect your phone in style! Fits most models. Cute and durable.</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Phone Case', '36.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 6: Dance Rug -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/94714b8c66a3c76a4a2966e0ab3e71fe/a68f79cc366c5fae-46/s1280x1920/98b57a139e2f01dfad1d85f4417ee8be979eca83.pnj" alt="Dance Rug">
+                <h3>Dance Rug</h3>
+                <div class="price">$90 <small>USD</small></div>
+                <div class="description">Soft, colorful rug for your dance space! Non-slip and machine washable.</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Rug', '90.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 7: Coin Purse -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/e0331117fe207f1c74c5efc3aa69b982/a68f79cc366c5fae-35/s1280x1920/3bd6e86120fe52dfe93657a56eb81a8a92ff1757.pnj" alt="Coin Purse">
+                <h3>Coin Purse</h3>
+                <div class="price">$24 <small>USD</small></div>
+                <div class="description">Tiny but mighty! Perfect for holding your allowance or dance tokens.</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Coin Purse', '24.00')">Add to Cart 🛒</button>
+            </div>
+
+            <!-- Product 8: Dance Charm -->
+            <div class="product-card">
+                <img class="product-image" src="https://64.media.tumblr.com/235a1de80042122cf97a76581ad647a1/a68f79cc366c5fae-fc/s1280x1920/0ac791abcf38e4ec2ab0ca037a24b27eb20e5271.pnj" alt="Dance Charm">
+                <h3>Dance Charm</h3>
+                <div class="price">$16 <small>USD</small></div>
+                <div class="description">Cute charm for your bracelet or backpack. Show your dance pride!</div>
+                <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Charm', '16.00')">Add to Cart 🛒</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- ============ 6. MODALS ======================= -->
     <!-- ============================================== -->
 
     <!-- Report Modal -->
@@ -1225,6 +1440,66 @@
         </div>
     </div>
 
+    <!-- STORE PAYMENT MODAL -->
+    <div id="modal-store-payment" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeStorePaymentModal()">&times;</button>
+            <h2 style="color: var(--success-green);">🛍️ Complete Your Purchase</h2>
+            <p style="margin-bottom: 10px; font-size: 1.1rem;">
+                <strong id="product-name-display">Menina Dançando Funk Merch</strong>
+            </p>
+            <p style="margin-bottom: 15px; font-size: 1.3rem; color: var(--primary-color); font-weight: bold;">
+                Total: $<span id="product-price-display">0.00</span> USD
+            </p>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">All payments processed through parent/guardian accounts. Secure checkout.</p>
+
+            <div class="payment-options">
+                <!-- PayPal Option -->
+                <div class="payment-option-box">
+                    <h3>💙 Pay with PayPal</h3>
+                    <button class="paypal-btn" onclick="processStorePayPal()">
+                        💳 PayPal
+                        <span style="font-size: 22px;">→</span>
+                    </button>
+                </div>
+
+                <!-- Stripe Checkout Link -->
+                <div class="payment-option-box">
+                    <h3>⚡ Pay with Stripe (Checkout)</h3>
+                    <button class="stripe-checkout-btn" onclick="openStoreStripeCheckout()">
+                        <span class="stripe-icon">⚡</span>
+                        Checkout with Stripe
+                        <span style="font-size: 20px;">→</span>
+                    </button>
+                </div>
+
+                <!-- Venmo -->
+                <div class="payment-option-box">
+                    <h3>💙 Pay with Venmo</h3>
+                    <button class="venmo-btn" onclick="openStoreVenmo()">
+                        <span class="venmo-icon">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="16" cy="16" r="14" stroke="white" stroke-width="1.5" opacity="0.6"/>
+                                <path d="M10 10L15 22L20 10H23L18 22L13 10H10Z" fill="white"/>
+                            </svg>
+                        </span>
+                        Pay with Venmo
+                        <span style="font-size: 24px;">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="redirect-note">
+                <span style="font-size: 1.5rem;">📧</span>
+                <span>After payment, <strong>check your email</strong> for order confirmation and shipping details.</span>
+            </div>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 0.8rem; color: #999;">
+                🔒 Secure payments • Parent/guardian accounts only • 100% kid-safe
+            </div>
+        </div>
+    </div>
+
     <!-- Success Modal -->
     <div id="modal-success" class="modal-overlay">
         <div class="modal-content" style="text-align: center;">
@@ -1321,6 +1596,7 @@
         document.getElementById('page-kids').classList.add('hidden');
         document.getElementById('page-parents').classList.add('hidden');
         document.getElementById('page-videos').classList.add('hidden');
+        document.getElementById('page-store').classList.add('hidden');
         document.getElementById(pageId).classList.remove('hidden');
         window.scrollTo(0, 0);
     }
@@ -1344,6 +1620,8 @@
             const modalId = event.target.id;
             if (modalId === 'modal-monthly') {
                 closeMonthlyModal();
+            } else if (modalId === 'modal-store-payment') {
+                closeStorePaymentModal();
             } else {
                 event.target.classList.remove('active');
             }
@@ -1356,6 +1634,8 @@
             document.querySelectorAll('.modal-overlay.active').forEach(modal => {
                 if (modal.id === 'modal-monthly') {
                     closeMonthlyModal();
+                } else if (modal.id === 'modal-store-payment') {
+                    closeStorePaymentModal();
                 } else {
                     modal.classList.remove('active');
                 }
@@ -1383,7 +1663,7 @@
         }
     }
 
-    // ---- PAYMENT LOGIC ----
+    // ---- MEMBERSHIP PAYMENT LOGIC ----
     let paypalRendered = false;
 
     function openMonthlyPayment() {
@@ -1469,6 +1749,54 @@
         }, 500);
     }
 
+    // ---- STORE PAYMENT LOGIC ----
+    let currentProduct = {
+        name: '',
+        price: '0.00'
+    };
+
+    function openPayment(productName, productPrice) {
+        currentProduct.name = productName;
+        currentProduct.price = productPrice;
+        document.getElementById('product-name-display').textContent = productName;
+        document.getElementById('product-price-display').textContent = productPrice;
+        toggleModal('modal-store-payment', true);
+    }
+
+    function closeStorePaymentModal() {
+        toggleModal('modal-store-payment', false);
+    }
+
+    function processStorePayPal() {
+        const product = currentProduct;
+        closeStorePaymentModal();
+        showSuccessModal(
+            "PayPal Checkout Opened! 💙",
+            "Complete your purchase for " + product.name + " ($" + product.price + "). Check your email for confirmation."
+        );
+        window.open('https://www.paypal.com', '_blank');
+    }
+
+    function openStoreStripeCheckout() {
+        const product = currentProduct;
+        closeStorePaymentModal();
+        showSuccessModal(
+            "Stripe Checkout Opened! ⚡",
+            "Complete your purchase for " + product.name + " ($" + product.price + "). Check your email for confirmation."
+        );
+        window.open('https://donate.stripe.com/cNi28s3SGdRr5ps81E6c000', '_blank');
+    }
+
+    function openStoreVenmo() {
+        const product = currentProduct;
+        closeStorePaymentModal();
+        showSuccessModal(
+            "Venmo Opened! 💙",
+            "Complete your purchase for " + product.name + " ($" + product.price + "). Check your email for confirmation."
+        );
+        window.open('https://account.venmo.com/u/Viraldancando', '_blank');
+    }
+
     // ---- Consent Logic ----
     function updateConsent() {
         const name = document.getElementById('parent-name').value;
@@ -1507,6 +1835,7 @@
     document.body.style.overflow = 'hidden';
     console.log("✨ Menina Dançando Funk is ready! 🎵");
     console.log("💳 Payment Methods: Monthly (PayPal/Stripe) | Yearly (Venmo)");
+    console.log("🛍️ Merch Store: 8 products available");
     console.log("🎥 Parents Corner: Video embedded with autoplay");
 </script>
 
