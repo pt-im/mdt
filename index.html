@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>✨ Menina Dançando Funk - Kids Dance Community</title>
-    <meta name="6a97888e-site-verification" content="e40c6f1addb8cd535665a81d2b2c5d96">
-    <!-- AD SCRIPT - Loads automatically on page load -->
-    <script src="https://emotionallytonightintelligent.com/06/01/72/0601723b63ae190cfc4dce0e44bf302e.js"></script>
     
     <style>
         /* ===== CUTE THEME & VARIABLES ===== */
@@ -825,6 +822,137 @@
             display: inline-block;
         }
 
+        /* ===== FUN FACTS PAGE STYLES ===== */
+        .facts-intro-card {
+            background: linear-gradient(145deg, #fff5f7, #f0f9ff);
+            border: 4px solid var(--accent-color);
+        }
+        .facts-intro-card h2 {
+            justify-content: center;
+        }
+        .fun-fact-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #333;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 5px;
+        }
+        .flag-banner {
+            background: linear-gradient(135deg, #009739 0%, #FEDB00 50%, #009739 100%);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .flag-banner h2 {
+            color: white !important;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .flag-banner p {
+            color: white !important;
+            font-size: 1.2rem;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 4px solid var(--primary-color);
+            margin: 15px 0;
+        }
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+        }
+        .timeline-item .year {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+        }
+        .timeline-item p {
+            margin-top: 5px;
+            color: #444;
+            line-height: 1.6;
+        }
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .fact-box {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 20px;
+            border: 3px solid #f0f0f0;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .fact-box:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-4px);
+        }
+        .fact-box .big-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .fact-box h4 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .fact-box p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        .facts-list {
+            list-style: none;
+            padding: 0;
+        }
+        .facts-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: #f9f9f9;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary-color);
+            font-size: 1.05rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .facts-list li .emoji {
+            font-size: 1.5rem;
+        }
+        .facts-list li .emoji + div {
+            flex: 1;
+        }
+        .facts-context-card {
+            border: 4px solid var(--primary-color);
+            background: #fff5f7;
+        }
+        .facts-context-card h2,
+        .facts-fun-card h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .facts-fun-card {
+            border: 4px solid var(--accent-color);
+            background: #fffdf5;
+        }
+
         /* ===== MISC ===== */
         .flex-wrap { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
         .flex-1 { flex: 1; min-width: 200px; }
@@ -863,6 +991,7 @@
             .dancer-wrapper { font-size: 4.5rem; }
             .bg-emoji { font-size: 2rem !important; }
             .product-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .fact-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 400px) {
@@ -983,7 +1112,7 @@
                 <span style="font-size: 3rem;">🇧🇷</span>
                 <h3 style="color: var(--secondary-color);">Brazil Fun Facts</h3>
                 <p>Culture, music &amp; history!</p>
-                <button class="funky-button blue" style="padding: 8px 20px; font-size: 0.9rem;" onclick="toggleModal('modal-explore', true)">Explore</button>
+                <button class="funky-button blue" style="padding: 8px 20px; font-size: 0.9rem;" onclick="showPage('page-facts')">Explore</button>
             </div>
             <div class="funky-card text-center">
                 <span style="font-size: 3rem;">🎭</span>
@@ -1119,7 +1248,156 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- ============ 4. PARENT DASHBOARD ============= -->
+    <!-- ============ 4. FUN FACTS PAGE =============== -->
+    <!-- ============================================== -->
+    <div id="page-facts" class="hidden">
+        <div class="flex-wrap" style="justify-content: space-between; margin-bottom: 30px;">
+            <button class="back-button" onclick="showPage('page-kids')">← Back to Kids Zone</button>
+            <h1 class="section-title">🇧🇷 Fun Facts</h1>
+            <div style="width: 150px;"></div>
+        </div>
+
+        <!-- ===== INTRO ===== -->
+        <div class="funky-card facts-intro-card">
+            <div class="text-center">
+                <span style="font-size: 4rem;">💃</span>
+                <h2 style="justify-content: center; color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">What is Menina Dançando Funk?</h2>
+                <p style="font-size: 1.2rem; color: #555;">
+                    <strong>"Menina dançando funk"</strong> means <strong>"girl dancing funk"</strong> in Portuguese.
+                    It's not a single song or person – it's a whole <strong>vibrant culture</strong> of kids expressing themselves
+                    through Brazilian Funk dance on social media!
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 15px;">
+                    <span class="fun-fact-badge">🇧🇷 Born in Brazil</span>
+                    <span class="fun-fact-badge">🎵 Funk Carioca</span>
+                    <span class="fun-fact-badge">📱 Viral on TikTok</span>
+                    <span class="fun-fact-badge">💃 By Kids, For Kids</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FLAG BANNER ===== -->
+        <div class="flag-banner">
+            <h2>🇧🇷 Brazil – The Home of Funk</h2>
+            <p>Brazilian Funk (Funk Carioca) was born in the favelas of Rio de Janeiro. Today, it's a global phenomenon!</p>
+        </div>
+
+        <!-- ===== TIMELINE ===== -->
+        <div class="funky-card">
+            <h2 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">📅 When Did It Start?</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="year">🎵 Late 1970s – 1980s</span>
+                    <p>Brazilian DJs started mixing imported American soul, funk, and Miami bass records at massive weekend parties called <strong>"bailes"</strong> in Rio's favelas.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">🥁 1990s</span>
+                    <p>Producers like <strong>DJ Luciano Oliveira</strong> created the <strong>"Tamborzão"</strong> rhythm – mimicking Afro-Brazilian drum patterns on electronic machines. This gave birth to the uniquely aggressive, fast beat we know today as Brazilian Funk.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="year">📱 2000s – Present</span>
+                    <p>Funk exploded on social media! <strong>Passinho</strong> (intricate footwork) was created by kids in the favelas. Today, Brazilian kids are global trendsetters on <strong>TikTok, Instagram Reels, and YouTube Shorts</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== OTHER DANCES ===== -->
+        <div class="funky-card">
+            <h2 style="color: var(--primary-color); font-size: 1.8rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">🕺 What Other Dances Do Kids in Brazil Do?</h2>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">
+                Brazilian kids are <strong>incredibly creative</strong>! They mix traditional rhythms with modern internet culture to create amazing dance styles:
+            </p>
+            <div class="fact-grid">
+                <div class="fact-box">
+                    <span class="big-icon">👟</span>
+                    <h4>Passinho</h4>
+                    <p><strong>"The Little Step"</strong> – Created in the 2000s by kids in Rio's favelas. It's a mesmerizing street dance with <strong>lightning-fast footwork</strong>, blending samba, breakdancing, capoeira, and pop. It's now officially recognized as an <strong>"intangible cultural heritage"</strong> in Rio!</p>
+                </div>
+                <div class="fact-box">
+                    <span class="big-icon">📱</span>
+                    <h4>Dancinhas (TikTok Choreo)</h4>
+                    <p>Brazilian youth are <strong>global trendsetters</strong> on TikTok and Instagram. They create highly synchronized short routines with <strong>chest-level framing, intricate hand gestures, sudden hip drops, and funny facial expressions</strong>.</p>
+                </div>
+                <div class="fact-box">
+                    <span class="big-icon">🎭</span>
+                    <h4>Samba & Pagode</h4>
+                    <p>While traditional, kids still grow up learning the complex, rapid <strong>hip-and-foot movements</strong> of samba, especially during <strong>school events and regional festivals</strong>.</p>
+                </div>
+                <div class="fact-box">
+                    <span class="big-icon">☂️</span>
+                    <h4>Frevo & Axé</h4>
+                    <p>In Northeast Brazil, kids learn <strong>explosive, athletic street dances</strong> like <strong>Frevo</strong> (using small umbrellas and acrobatic jumps) and <strong>Axé</strong> (energetic group choreographies).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CULTURAL CONTEXT ===== -->
+        <div class="funky-card facts-context-card">
+            <h2>🌍 Crucial Cultural Context</h2>
+            <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">
+                Understanding Brazilian Funk means understanding its <strong>history, struggles, and triumphs</strong>:
+            </p>
+            <ul class="facts-list">
+                <li>
+                    <span class="emoji">🤝</span>
+                    <div>
+                        <strong>Social Mobilization</strong><br>
+                        For many kids growing up in impoverished neighborhoods, dancing in street battles (<strong>rodas</strong>) or building an audience on social media provides a <strong>direct path away from drug trade and violence</strong>.
+                    </div>
+                </li>
+                <li>
+                    <span class="emoji">🌎</span>
+                    <div>
+                        <strong>Global Influence</strong><br>
+                        Despite its local roots, major pop stars like <strong>Beyoncé, Anitta</strong>, and even Brazilian soccer stars celebrate with <strong>Funk and Passinho choreography</strong> on international stages!
+                    </div>
+                </li>
+                <li>
+                    <span class="emoji">🧠</span>
+                    <div>
+                        <strong>Misconceptions & Resilience</strong><br>
+                        Mainstream authorities historically <strong>criminalized</strong> Funk parties due to explicit lyrics and their association with favelas. Today, it is <strong>recognized globally as a resilient art form</strong> that empowers youth.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ===== FUN FACTS GRID ===== -->
+        <div class="funky-card facts-fun-card">
+            <h2>🎵 Fun Facts About Brazilian Funk</h2>
+            <div class="fact-grid">
+                <div class="fact-box" style="border-color: var(--primary-color);">
+                    <span class="big-icon">🎶</span>
+                    <h4>Born in the Favelas</h4>
+                    <p>Brazilian Funk was born in <strong>Rio's favelas</strong> in the 1980s. It mixed Miami bass, hip-hop, and traditional Brazilian rhythms.</p>
+                </div>
+                <div class="fact-box" style="border-color: var(--secondary-color);">
+                    <span class="big-icon">👀</span>
+                    <h4>Viral Trend</h4>
+                    <p>If you saw "menina dançando funk," it was likely from <strong>dance challenges</strong> on TikTok or Instagram Reels!</p>
+                </div>
+                <div class="fact-box" style="border-color: var(--accent-color);">
+                    <span class="big-icon">🏆</span>
+                    <h4>Passinho is Heritage</h4>
+                    <p>The <strong>Rio de Janeiro state legislature</strong> officially declared Passinho an <strong>"intangible cultural heritage"</strong>.</p>
+                </div>
+                <div class="fact-box" style="border-color: var(--success-green);">
+                    <span class="big-icon">💪</span>
+                    <h4>Empowerment</h4>
+                    <p>For many kids, dancing in battles (<strong>rodas</strong>) or building a social media audience provides a <strong>path away from violence</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div style="text-align: center; padding: 10px 0; font-size: 0.8rem; color: #aaa; border-top: 2px dashed #eee; margin-top: 10px;">
+            📚 Learn more about Brazilian culture and dance!<br>
+            🇧🇷 Menina Dançando Funk — Educational Community for Kids, by Kids
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- ============ 5. PARENT DASHBOARD ============= -->
     <!-- ============================================== -->
     <div id="page-parents" class="hidden">
         <div class="flex-wrap" style="justify-content: space-between; margin-bottom: 30px;">
@@ -1223,7 +1501,7 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- ============ 5. MERCH STORE ================== -->
+    <!-- ============ 6. MERCH STORE ================== -->
     <!-- ============================================== -->
     <div id="page-store" class="hidden">
         <div class="flex-wrap" style="justify-content: space-between; margin-bottom: 30px;">
@@ -1241,7 +1519,6 @@
 
         <!-- Product Grid -->
         <div class="product-grid">
-            <!-- Product 1: Dance Tee -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/00aaf53f4801ede6279e46b7cbde074b/a68f79cc366c5fae-cb/s1280x1920/7e0e9455414e7305f4dbbbffab3a557ed8196a1d.pnj" alt="Dance Tee">
                 <h3>Dance Tee</h3>
@@ -1250,7 +1527,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk T-Shirt', '50.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 2: Dance Backpack -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/e093f8b9fed1435386df4727aba71ba2/a68f79cc366c5fae-51/s1280x1920/0c03331ce97cb4bb733eec44f9c2fef7d286f1d4.pnj" alt="Dance Backpack">
                 <h3>Dance Backpack</h3>
@@ -1259,7 +1535,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Backpack', '96.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 3: Dance Jacket -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/76c66460880cf9ce56ba926b2ab45c77/a68f79cc366c5fae-30/s1280x1920/a539b7f7480a120ac7fd0836328deed3355ee542.pnj" alt="Dance Jacket">
                 <h3>Dance Jacket</h3>
@@ -1268,7 +1543,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Jacket', '110.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 4: Dance Handbag -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/90a7c5943a5cb906f8aa36de9a460031/a68f79cc366c5fae-dc/s1280x1920/5c0f9972d6d7c6860196d68a88f984af72aa48e5.pnj" alt="Dance Handbag">
                 <h3>Dance Handbag</h3>
@@ -1277,7 +1551,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Handbag', '70.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 5: Phone Case -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/a5eecdf619f2f64ec710cc3b566d2964/a68f79cc366c5fae-3c/s1280x1920/aad55497cd960bdfab5feadb06a53f15ccb31661.pnj" alt="Phone Case">
                 <h3>Phone Case</h3>
@@ -1286,7 +1559,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Phone Case', '36.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 6: Dance Rug -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/94714b8c66a3c76a4a2966e0ab3e71fe/a68f79cc366c5fae-46/s1280x1920/98b57a139e2f01dfad1d85f4417ee8be979eca83.pnj" alt="Dance Rug">
                 <h3>Dance Rug</h3>
@@ -1295,7 +1567,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Rug', '90.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 7: Coin Purse -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/e0331117fe207f1c74c5efc3aa69b982/a68f79cc366c5fae-35/s1280x1920/3bd6e86120fe52dfe93657a56eb81a8a92ff1757.pnj" alt="Coin Purse">
                 <h3>Coin Purse</h3>
@@ -1304,7 +1575,6 @@
                 <button class="funky-button btn-small" onclick="openPayment('Menina Dançando Funk Coin Purse', '24.00')">Add to Cart 🛒</button>
             </div>
 
-            <!-- Product 8: Dance Charm -->
             <div class="product-card">
                 <img class="product-image" src="https://64.media.tumblr.com/235a1de80042122cf97a76581ad647a1/a68f79cc366c5fae-fc/s1280x1920/0ac791abcf38e4ec2ab0ca037a24b27eb20e5271.pnj" alt="Dance Charm">
                 <h3>Dance Charm</h3>
@@ -1316,7 +1586,7 @@
     </div>
 
     <!-- ============================================== -->
-    <!-- ============ 6. MODALS ======================= -->
+    <!-- ============ 7. MODALS ======================= -->
     <!-- ============================================== -->
 
     <!-- Report Modal -->
@@ -1337,21 +1607,6 @@
                 <button class="funky-button" onclick="submitReport()">📨 Send Report</button>
                 <button class="funky-button gray" onclick="toggleModal('modal-report', false)">Cancel</button>
             </div>
-        </div>
-    </div>
-
-    <!-- Explore Modal -->
-    <div id="modal-explore" class="modal-overlay">
-        <div class="modal-content text-center">
-            <button class="modal-close" onclick="toggleModal('modal-explore', false)">&times;</button>
-            <span style="font-size: 5rem;">🇧🇷</span>
-            <h2 style="color: var(--secondary-color);">Brazil Fun Facts</h2>
-            <div style="text-align: left; background: #f9f9f9; padding: 20px; border-radius: 20px; margin: 20px 0;">
-                <p>🌳 <strong>Amazon Rainforest:</strong> Brazil is home to 60% of the Amazon rainforest!</p>
-                <p>🎶 <strong>Music:</strong> Besides Funk, Brazil is famous for Samba, Bossa Nova, and Forró.</p>
-                <p>⚽ <strong>Soccer:</strong> It's the only country to have played in every World Cup!</p>
-            </div>
-            <button class="funky-button blue" onclick="toggleModal('modal-explore', false)">Awesome!</button>
         </div>
     </div>
 
@@ -1378,13 +1633,11 @@
             <p style="margin-bottom: 10px;">Choose your preferred payment method:</p>
             
             <div class="payment-options">
-                <!-- PayPal Option -->
                 <div class="payment-option-box">
                     <h3>💙 Pay with PayPal</h3>
                     <div id="paypal-button-container"></div>
                 </div>
 
-                <!-- Stripe Checkout Link -->
                 <div class="payment-option-box">
                     <h3>⚡ Pay with Stripe (Checkout)</h3>
                     <button class="stripe-checkout-btn" onclick="openStripeCheckout()">
@@ -1394,7 +1647,6 @@
                     </button>
                 </div>
 
-                <!-- Stripe Buy Button (Card) -->
                 <div class="payment-option-box">
                     <h3>💳 Pay with Card (Stripe)</h3>
                     <div id="stripe-buy-container">
@@ -1458,7 +1710,6 @@
             <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">All payments processed through parent/guardian accounts. Secure checkout.</p>
 
             <div class="payment-options">
-                <!-- PayPal Option -->
                 <div class="payment-option-box">
                     <h3>💙 Pay with PayPal</h3>
                     <button class="paypal-btn" onclick="processStorePayPal()">
@@ -1467,7 +1718,6 @@
                     </button>
                 </div>
 
-                <!-- Stripe Checkout Link -->
                 <div class="payment-option-box">
                     <h3>⚡ Pay with Stripe (Checkout)</h3>
                     <button class="stripe-checkout-btn" onclick="openStoreStripeCheckout()">
@@ -1477,7 +1727,6 @@
                     </button>
                 </div>
 
-                <!-- Venmo -->
                 <div class="payment-option-box">
                     <h3>💙 Pay with Venmo</h3>
                     <button class="venmo-btn" onclick="openStoreVenmo()">
@@ -1519,10 +1768,8 @@
 <!-- ============================================== -->
 <!-- ============ PAYMENT SDKs ================== -->
 <!-- ============================================== -->
-<!-- Stripe Buy Button SDK -->
 <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 
-<!-- PayPal SDK -->
 <script
     src="https://www.paypal.com/sdk/js?client-id=AaZIURGHfoVL0seNGmKhkm3_piU1UERhw7N4TaWhA8DIRRfxZ383l5QqVbyBHfsrB1Hz3H589vd1ZcpI&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"
     data-sdk-integration-source="developer-studio"
@@ -1534,7 +1781,6 @@
 <script>
     // ===== INTRO PAGE LOGIC =====
     
-    // Confetti Generator
     function createConfetti() {
         const container = document.getElementById('confettiContainer');
         const colors = ['#FF6B9D', '#5BC0EB', '#FFD166', '#8BC34A', '#FF9800', '#AB47BC', '#FF4081', '#26C6DA'];
@@ -1555,7 +1801,6 @@
 
     createConfetti();
 
-    // Enter App Function
     function enterApp() {
         playClickSound();
         document.getElementById('page-intro').classList.add('hidden');
@@ -1563,7 +1808,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Button Click Sound
     function playClickSound() {
         try {
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1594,18 +1838,17 @@
 
     // ===== MAIN APP LOGIC =====
     
-    // ---- Page Navigation ----
     function showPage(pageId) {
         document.getElementById('page-landing').classList.add('hidden');
         document.getElementById('page-kids').classList.add('hidden');
         document.getElementById('page-parents').classList.add('hidden');
         document.getElementById('page-videos').classList.add('hidden');
         document.getElementById('page-store').classList.add('hidden');
+        document.getElementById('page-facts').classList.add('hidden');
         document.getElementById(pageId).classList.remove('hidden');
         window.scrollTo(0, 0);
     }
 
-    // ---- Modal Logic ----
     function toggleModal(modalId, show) {
         const modal = document.getElementById(modalId);
         if (show) {
@@ -1618,7 +1861,6 @@
         }
     }
 
-    // Close modals by clicking outside
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('modal-overlay') && event.target.classList.contains('active')) {
             const modalId = event.target.id;
@@ -1632,7 +1874,6 @@
         }
     });
 
-    // Close modals with Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             document.querySelectorAll('.modal-overlay.active').forEach(modal => {
@@ -1647,7 +1888,6 @@
         }
     });
 
-    // ---- Report Logic ----
     function submitReport() {
         const checkboxes = document.querySelectorAll('#report-reasons input[type="checkbox"]');
         const details = document.getElementById('report-details').value;
@@ -1667,7 +1907,6 @@
         }
     }
 
-    // ---- MEMBERSHIP PAYMENT LOGIC ----
     let paypalRendered = false;
 
     function openMonthlyPayment() {
@@ -1753,7 +1992,6 @@
         }, 500);
     }
 
-    // ---- STORE PAYMENT LOGIC ----
     let currentProduct = {
         name: '',
         price: '0.00'
@@ -1801,7 +2039,6 @@
         window.open('https://account.venmo.com/u/Viraldancando', '_blank');
     }
 
-    // ---- Consent Logic ----
     function updateConsent() {
         const name = document.getElementById('parent-name').value;
         const email = document.getElementById('parent-email').value;
@@ -1817,31 +2054,24 @@
         }
     }
 
-    // ---- Cultural Context Reveal ----
     function revealParentContent() {
         document.getElementById('parent-cultural-content').classList.remove('hidden');
         showSuccessModal("Content Unlocked 📚", "You now have access to the cultural context library. Please remember to supervise your child's learning.");
     }
 
-    // ---- Video Page Info ----
     function showMoreInfo() {
         alert("📚 MEMBERSHIP INCLUDES:\n\n✅ Unlimited access to all 50+ tutorials\n✅ New videos added every week\n✅ Exclusive dance challenges with prizes\n✅ Safe, moderated community forum\n✅ Progress tracking & badges\n✅ Downloadable practice guides\n✅ Parent dashboard & controls\n\n💰 Monthly: $5 (PayPal/Stripe)\n💰 Yearly: $50 (Venmo)\n👨‍👩‍👧 Requires parent/guardian approval");
     }
 
-    // ---- Generic Success Modal ----
     function showSuccessModal(title, message) {
         document.getElementById('success-title').innerText = title;
         document.getElementById('success-message').innerText = message;
         toggleModal('modal-success', true);
     }
 
-    // ---- Startup ----
     document.body.style.overflow = 'hidden';
     console.log("✨ Menina Dançando Funk is ready! 🎵");
-    console.log("💳 Payment Methods: Monthly (PayPal/Stripe) | Yearly (Venmo)");
-    console.log("🛍️ Merch Store: 8 products available");
-    console.log("🎥 Parents Corner: Video embedded with autoplay");
-    console.log("📢 Ad script loaded from emotionallytonightintelligent.com");
+    console.log("🇧🇷 Fun Facts page now integrated as a full page (no popups)");
 </script>
 
 </body>
