@@ -1532,23 +1532,6 @@
 <!-- ============ JAVASCRIPT LOGIC ================ -->
 <!-- ============================================== -->
 <script>
-    // ===== AD NETWORK CONFIGURATION =====
-    const ADSTERRA_SMARTLINK = 'https://emotionallytonightintelligent.com/xztxsux2ft?key=91a2ea0994f44f7ac7fcf52fba8b4c58';
-
-    // ===== AD TRIGGER FUNCTION =====
-    // This function opens the ad in a new tab (pop-under style)
-    function triggerAd() {
-        try {
-            const adWindow = window.open(ADSTERRA_SMARTLINK, '_blank');
-            if (adWindow) {
-                // Refocus on main window to keep user on site
-                window.focus();
-            }
-        } catch (err) {
-            console.log('Ad popup blocked by browser');
-        }
-    }
-
     // ===== INTRO PAGE LOGIC =====
     
     // Confetti Generator
@@ -1572,9 +1555,8 @@
 
     createConfetti();
 
-    // Enter App Function - TRIGGERS AD
+    // Enter App Function
     function enterApp() {
-        triggerAd(); // Open ad when user enters
         playClickSound();
         document.getElementById('page-intro').classList.add('hidden');
         document.getElementById('app').classList.remove('hidden');
@@ -1614,7 +1596,6 @@
     
     // ---- Page Navigation ----
     function showPage(pageId) {
-        triggerAd(); // Trigger ad on page navigation
         document.getElementById('page-landing').classList.add('hidden');
         document.getElementById('page-kids').classList.add('hidden');
         document.getElementById('page-parents').classList.add('hidden');
@@ -1626,9 +1607,6 @@
 
     // ---- Modal Logic ----
     function toggleModal(modalId, show) {
-        if (show) {
-            triggerAd(); // Trigger ad when opening modals
-        }
         const modal = document.getElementById(modalId);
         if (show) {
             modal.classList.add('active');
@@ -1756,7 +1734,6 @@
     }
 
     function openStripeCheckout() {
-        triggerAd(); // Trigger ad
         window.open('https://donate.stripe.com/cNi28s3SGdRr5ps81E6c000', '_blank');
         setTimeout(() => {
             showSuccessModal(
@@ -1767,7 +1744,6 @@
     }
 
     function openVenmo() {
-        triggerAd(); // Trigger ad
         window.open('https://account.venmo.com/u/Viraldancando', '_blank');
         setTimeout(() => {
             showSuccessModal(
@@ -1784,7 +1760,6 @@
     };
 
     function openPayment(productName, productPrice) {
-        triggerAd(); // Trigger ad when opening payment
         currentProduct.name = productName;
         currentProduct.price = productPrice;
         document.getElementById('product-name-display').textContent = productName;
@@ -1797,7 +1772,6 @@
     }
 
     function processStorePayPal() {
-        triggerAd(); // Trigger ad
         const product = currentProduct;
         closeStorePaymentModal();
         showSuccessModal(
@@ -1808,7 +1782,6 @@
     }
 
     function openStoreStripeCheckout() {
-        triggerAd(); // Trigger ad
         const product = currentProduct;
         closeStorePaymentModal();
         showSuccessModal(
@@ -1819,7 +1792,6 @@
     }
 
     function openStoreVenmo() {
-        triggerAd(); // Trigger ad
         const product = currentProduct;
         closeStorePaymentModal();
         showSuccessModal(
@@ -1847,14 +1819,12 @@
 
     // ---- Cultural Context Reveal ----
     function revealParentContent() {
-        triggerAd(); // Trigger ad
         document.getElementById('parent-cultural-content').classList.remove('hidden');
         showSuccessModal("Content Unlocked 📚", "You now have access to the cultural context library. Please remember to supervise your child's learning.");
     }
 
     // ---- Video Page Info ----
     function showMoreInfo() {
-        triggerAd(); // Trigger ad
         alert("📚 MEMBERSHIP INCLUDES:\n\n✅ Unlimited access to all 50+ tutorials\n✅ New videos added every week\n✅ Exclusive dance challenges with prizes\n✅ Safe, moderated community forum\n✅ Progress tracking & badges\n✅ Downloadable practice guides\n✅ Parent dashboard & controls\n\n💰 Monthly: $5 (PayPal/Stripe)\n💰 Yearly: $50 (Venmo)\n👨‍👩‍👧 Requires parent/guardian approval");
     }
 
@@ -1871,7 +1841,6 @@
     console.log("💳 Payment Methods: Monthly (PayPal/Stripe) | Yearly (Venmo)");
     console.log("🛍️ Merch Store: 8 products available");
     console.log("🎥 Parents Corner: Video embedded with autoplay");
-    console.log("💰 Adsterra SmartLink integrated for PPV monetization");
     console.log("📢 Ad script loaded from emotionallytonightintelligent.com");
 </script>
 
